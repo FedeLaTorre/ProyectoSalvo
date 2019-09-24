@@ -16,10 +16,10 @@ public class SalvoController {
     private GameRepository gameRepository;
 
     @RequestMapping("/games")
-    public List<Long> gettAllgames(){
+    public List<Object> gettAllgames(){
         return gameRepository.findAll()
                 .stream()
-                .map(game -> game.getId())
+                .map(game -> game.toDTO())
                 .collect(Collectors.toList());
     }
 }
