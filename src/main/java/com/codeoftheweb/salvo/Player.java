@@ -25,6 +25,8 @@ public class Player {
     public Player() {
     }
 
+
+
     public Player(String userName) {
 
         this.userName = userName;
@@ -38,12 +40,7 @@ public class Player {
         return userName;
     }
 
-    /*private Map<String, Object> makePlayerDTO(Player player){
-        Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("id", player.getId());
-        dto.put("mail", player.getUserName());
-        dto.put("game")
-    }*/
+
 
     @OneToMany (mappedBy = "player", fetch = FetchType.EAGER)
     Set<GamePlayer> gameplayers;

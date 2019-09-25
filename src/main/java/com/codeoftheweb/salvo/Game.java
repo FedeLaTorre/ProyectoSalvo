@@ -38,11 +38,8 @@ public class Game {
     }
 
 
-    public Map<String, Object> toDTO(){
-        Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("id", this.getId());
-        dto.put("created", this.getCreationDate().toInstant());
-        return dto;
+    public Set<GamePlayer> getGameplayers() {
+        return gameplayers;
     }
 
     @OneToMany (mappedBy = "game", fetch = FetchType.EAGER)
