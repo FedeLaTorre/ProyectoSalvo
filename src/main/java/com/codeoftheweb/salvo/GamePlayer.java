@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 public class GamePlayer {
@@ -25,6 +23,10 @@ public class GamePlayer {
     @JoinColumn(name = "player_ID")
     private Player player;
 
+   @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
+    Set<Ship> ships = new HashSet<>();
+
+    private Ship ship;
     public GamePlayer() {
     }
 
