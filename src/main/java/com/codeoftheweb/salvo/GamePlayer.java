@@ -24,9 +24,14 @@ public class GamePlayer {
     private Player player;
 
    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
-    Set<Ship> ships = new HashSet<>();
+    Set<Ship> ships ;
 
-    private Ship ship;
+    public Set<Ship> getShips() {
+        return ships;
+    }
+
+
+
     public GamePlayer() {
     }
 

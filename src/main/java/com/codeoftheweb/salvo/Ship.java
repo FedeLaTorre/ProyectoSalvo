@@ -4,7 +4,7 @@ package com.codeoftheweb.salvo;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Ship {
@@ -14,7 +14,11 @@ public class Ship {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String type;
-    private List<String> locations;
+
+    @ElementCollection
+    @Column(name = "shipLocations")
+    private Set<String> locations;
+
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayersID")
@@ -32,7 +36,8 @@ public class Ship {
         return type;
     }
 
-    public List<String> getLocations() {
+
+    public Set<String> getLocations() {
         return locations;
     }
 
@@ -40,9 +45,10 @@ public class Ship {
         return gamePlayer;
     }
 
-    public Ship (String type, List<String> locations){
+    public Ship (String type, Set<String> locations, GamePlayer gamePlayer){
         this.type = type;
         this.locations = locations;
+        this.gamePlayer = gamePlayer;
     }
 
 
