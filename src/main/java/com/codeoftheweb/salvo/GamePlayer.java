@@ -14,7 +14,7 @@ public class GamePlayer {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-   private Date joinDate;
+    private Date joinDate;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "game_ID")
     private Game game;
@@ -23,17 +23,25 @@ public class GamePlayer {
     @JoinColumn(name = "player_ID")
     private Player player;
 
-   @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
-    Set<Ship> ships ;
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
+    Set<Ship> ships;
+
 
     public Set<Ship> getShips() {
         return ships;
     }
 
 
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
+    Set<Salvo> salvos;
+
+    public Set<Salvo> getSalvos() {
+        return salvos;
+    }
 
     public GamePlayer() {
     }
+
 
     public long getId() {
         return id;

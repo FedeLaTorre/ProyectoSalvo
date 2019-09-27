@@ -13,9 +13,9 @@ function loadData(){
             console.log(data)
             let playerInfo;
             if(data.gamePlayers[0].id == getParameterByName('gp'))
-                playerInfo = [data.gamePlayers[0].player.mail,data.gamePlayers[1].player.mail];
+                playerInfo = [data.gamePlayers[0].player.email,data.gamePlayers[1].player.email];
             else
-                playerInfo = [data.gamePlayers[1].player.mail,data.gamePlayers[0].player.mail];
+                playerInfo = [data.gamePlayers[1].player.email,data.gamePlayers[0].player.email];
 
             $('#playerInfo').text(playerInfo[0] + '(you) vs ' + playerInfo[1]);
 

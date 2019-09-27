@@ -43,7 +43,7 @@ public class SalvoController {
     private Map<String, Object> makePlayerDTO(Player player) {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
         dto.put("id", player.getId());
-        dto.put("mail", player.getUserName());
+        dto.put("email", player.getUserName());
         return dto;
     }
 
@@ -57,7 +57,7 @@ public class SalvoController {
     private Map<String, Object> makeShipDTO(Ship ship){
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("type", ship.getType());
-        dto.put("locations", ship.getLocations());
+        dto.put("shipLocations", ship.getLocations());
         return dto;
     }
     private List<Map<String, Object>> getAllShips(Set<Ship> ships){
@@ -69,9 +69,25 @@ public class SalvoController {
         dto.put("created", gamePlayer.getGame().getCreationDate().toInstant().toEpochMilli());
         dto.put("gamePlayers", getAllGamePlayersDTO(gamePlayer.getGame().getGameplayers()));
         dto.put("ships", getAllShips(gamePlayer.getShips()));
+        dto.put("salvoes", getAllSalvos(gamePlayer.getGame().getGameplayers().stream().flatMap(gamePlayer1 -> gamePlayer1.getSalvos().stream()).collect(Collectors.toSet())));
         return dto;
 
     }
+
+       /* private List<Map<String, Object>> listSalvos (Set<GamePlayer> gamePlayers){
+        return  gamePlayers.stream().flatMap(gamePlayer -> gamePlayer.getSalvos().stream().collect(Collectors.toSet()));
+}*/
+    private Map<String, Object> makeSalvoDTO(Salvo salvo){
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("turn", salvo.getTurn());
+        dto.put("player",salvo.getGamePlayer().getPlayer().getId());
+        dto.put("salvoLocations", salvo.getLocations());
+        return dto;
+    }
+    private List<Map<String, Object>> getAllSalvos(Set<Salvo> salvos){
+        return salvos.stream().map(salvo -> makeSalvoDTO(salvo)).collect(Collectors.toList());
+    }
+
 
     @Autowired
     private GamePlayerRepository gamePlayerRepository;
