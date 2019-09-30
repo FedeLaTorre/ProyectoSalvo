@@ -1,5 +1,7 @@
 package com.codeoftheweb.salvo;
 
+import com.codeoftheweb.salvo.models.*;
+import com.codeoftheweb.salvo.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +20,10 @@ public class SalvoApplication {
 		SpringApplication.run(SalvoApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner iniData (PlayerRepository playerRepository, GameRepository gameRepository, GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository, SalvoRepository salvoRepository){
+	public CommandLineRunner iniData (PlayerRepository playerRepository, GameRepository gameRepository,
+									  GamePlayerRepository gamePlayerRepository, ShipRepository shipRepository,
+									  SalvoRepository salvoRepository,
+									  ScoreRepository scoreRepository){
 		return	(args) -> {
 			Player p1 = new Player("j.bauer@ctu.gov");
 			Player p2 = new Player("c.obrian@ctu.gov");
@@ -117,7 +122,16 @@ public class SalvoApplication {
 					sa11, sa12, sa13, sa14, sa15, sa16, sa17, sa18, sa19, sa20, sa21));
 
 
-
+			Score sc1 = new Score(game1, p1, 1, Date.from(date.toInstant().plusSeconds(3600)));
+			Score sc2 = new Score(game1	, p2, 0, Date.from(date.toInstant().plusSeconds(3600)));
+			Score sc3 = new Score(game2	, p1, 0.5, Date.from(date.toInstant().plusSeconds(7200)));
+			Score sc4 = new Score(game2, p2, 0.5, Date.from(date.toInstant().plusSeconds(7200)));
+			Score sc5 = new Score(game3, p2, 1, Date.from(date.toInstant().plusSeconds(10800)));
+			Score sc6 = new Score(game3, p4, 0, Date.from(date.toInstant().plusSeconds(10800)));
+			Score sc7 = new Score(game4, p2, 0.5,Date.from(date.toInstant().plusSeconds(14400)) );
+			Score sc8 = new Score(game4, p1, 0.5, Date.from(date.toInstant().plusSeconds(14400)));
+			scoreRepository.saveAll(Arrays.asList(sc1, sc2, sc3, sc4, sc5,
+					sc6, sc7, sc8));
 
 
 
