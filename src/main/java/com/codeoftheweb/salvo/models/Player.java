@@ -1,6 +1,5 @@
 package com.codeoftheweb.salvo.models;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

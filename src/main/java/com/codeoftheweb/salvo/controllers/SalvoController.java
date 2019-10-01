@@ -39,7 +39,7 @@ public class SalvoController {
 
     @Autowired
     private PlayerRepository playerRepository;
-    @RequestMapping("/leaderboard")
+    @RequestMapping("/leaderBoard")
     public List<Object> getAllLeaderboard(){
         return playerRepository.findAll().stream().map(player -> player.makePlayerScoreDTO()).collect(Collectors.toList());
     }
