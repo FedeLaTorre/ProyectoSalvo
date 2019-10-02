@@ -14,25 +14,37 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private  Date creationDate;
+    private Date creationDate;
 
     @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
-    Set<Score> scores;
-    @OneToMany (mappedBy = "game", fetch = FetchType.EAGER)
-    Set <GamePlayer> gameplayers;
+    private Set<Score> scores;
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    private Set<GamePlayer> gameplayers;
 
-    public Game (){}
-
-
-    public Game (Date creationDate){this.creationDate = creationDate;}
-    public long getId() {return id;}
-
-    public Date getCreationDate() {return creationDate;}
+    public Game() {
+    }
 
 
-    public Set<GamePlayer> getGameplayers() {return gameplayers;}
+    public Game(Date creationDate) {
+        this.creationDate = creationDate;
+    }
 
-    public Set<Score> getScores(){return scores;}
+    public long getId() {
+        return id;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+
+    public Set<GamePlayer> getGameplayers() {
+        return gameplayers;
+    }
+
+    public Set<Score> getScores() {
+        return scores;
+    }
 
     public Map<String, Object> gameDTO() {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
@@ -43,12 +55,12 @@ public class Game {
         return dto;
     }
 
-    public  List<Map<String, Object>> listGamePlayers(Set<GamePlayer> gamePlayers) {
+    public List<Map<String, Object>> listGamePlayers(Set<GamePlayer> gamePlayers) {
         return gamePlayers.stream().map(gamePlayer -> gamePlayer.makeGamePlayersDTO()).collect(Collectors.toList());
     }
 
-    public List<Map<String, Object>> listScores(){
-        return  this.getScores().stream().map(score -> score.makeScoreDTO()).collect(Collectors.toList());
+    public List<Map<String, Object>> listScores() {
+        return this.getScores().stream().map(score -> score.makeScoreDTO()).collect(Collectors.toList());
     }
 
 

@@ -15,24 +15,46 @@ public class Player {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String userName;
+    private String password;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
-    Set<Score> scores;
+    private Set<Score> scores;
 
-    @OneToMany (mappedBy = "player", fetch = FetchType.EAGER)
-    Set<GamePlayer> gameplayers;
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private Set<GamePlayer> gameplayers;
 
-    public Player() {}
+    public Player() {
+    }
 
-    public Set<GamePlayer> getGameplayers() {return gameplayers;}
 
-    public Player(String userName) {this.userName = userName;}
+    public Set<GamePlayer> getGameplayers() {
+        return gameplayers;
+    }
 
-    public long getId() {return id;}
+    public Player(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
-    public String getUserName() {return userName;}
+    public long getId() {
+        return id;
+    }
 
-    public Set<Score> getScores(){return scores;}
+    public String getUserName() {
+        return userName;
+    }
+
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Map<String, Object> makePlayerDTO() {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
@@ -42,34 +64,34 @@ public class Player {
     }
 
 
-    public  Map<String, Object> makePlayerScoreDTO(){
+    public Map<String, Object> makePlayerScoreDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
         Map<String, Object> score = new LinkedHashMap<>();
 
         dto.put("id", this.getId());
         dto.put("email", this.getUserName());
         dto.put("score", score);
-            score.put("total", this.getTotalScore());
-            score.put("won", this.getWinScore());
-            score.put("lost", this.getLostScore());
-            score.put("tied", this.getTiedScore());
-    return dto;
+        score.put("total", this.getTotalScore());
+        score.put("won", this.getWinScore());
+        score.put("lost", this.getLostScore());
+        score.put("tied", this.getTiedScore());
+        return dto;
     }
-    //Crear total score para el leaderboard.
 
-    public Double getTotalScore(){
+
+    public Double getTotalScore() {
         return this.getWinScore() * 1.0D + this.getTiedScore() * 0.5D;
-
     }
 
-    public long getWinScore(){
+    public long getWinScore() {
         return this.getScores().stream().filter(score -> score.getScore() == 1.0D).count();
     }
 
-    public long getLostScore(){
+    public long getLostScore() {
         return this.getScores().stream().filter(score -> score.getScore() == 0).count();
     }
-    public long getTiedScore(){
+
+    public long getTiedScore() {
         return this.getScores().stream().filter(score -> score.getScore() == 0.5D).count();
     }
 }

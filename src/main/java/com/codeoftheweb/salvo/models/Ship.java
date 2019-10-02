@@ -22,35 +22,42 @@ public class Ship {
     private Set<String> locations;
 
 
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "gamePlayersID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "gamePlayerID")
     private GamePlayer gamePlayer;
 
-    public Ship (){}
+    public Ship() {
+    }
 
-    public long getId() {return id;}
+    public long getId() {
+        return id;
+    }
 
-    public String getType() {return type;}
+    public String getType() {
+        return type;
+    }
 
-    public Set<String> getLocations() {return locations;}
+    public Set<String> getLocations() {
+        return locations;
+    }
 
-    public GamePlayer getGamePlayer() {return gamePlayer;}
+    public GamePlayer getGamePlayer() {
+        return gamePlayer;
+    }
 
-    public Ship (String type, Set<String> locations, GamePlayer gamePlayer){
+    public Ship(String type, Set<String> locations, GamePlayer gamePlayer) {
         this.type = type;
         this.locations = locations;
         this.gamePlayer = gamePlayer;
     }
 
 
-    public Map<String, Object> makeShipDTO(){
+    public Map<String, Object> makeShipDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("type", this.getType());
         dto.put("shipLocations", this.getLocations());
         return dto;
     }
-
-
 
 
 }

@@ -27,7 +27,9 @@ public class GamePlayer {
     Set<Ship> ships;
 
 
-    public Set<Ship> getShips() {return ships;}
+    public Set<Ship> getShips() {
+        return ships;
+    }
 
 
     @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
@@ -37,17 +39,26 @@ public class GamePlayer {
         return salvos;
     }
 
-    public GamePlayer() {}
+    public GamePlayer() {
+    }
 
-    public long getId() {return id;}
+    public long getId() {
+        return id;
+    }
 
-    public Date getJoinDate() {return joinDate;}
+    public Date getJoinDate() {
+        return joinDate;
+    }
 
     // En caso de no mandar un long se manda@JsonIgnore
-    public Game getGame() {return game;}
+    public Game getGame() {
+        return game;
+    }
 
     // En caso de no mandar un long se manda@JsonIgnore
-    public Player getPlayer() {return player;}
+    public Player getPlayer() {
+        return player;
+    }
 
     public GamePlayer(Game game, Player player, Date joinDate) {
         this.game = game;
@@ -62,7 +73,7 @@ public class GamePlayer {
         return dto;
     }
 
-    public Map<String, Object> shipsDTO (){
+    public Map<String, Object> shipsDTO() {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
         dto.put("id", this.getGame().getId());
         dto.put("created", this.getGame().getCreationDate().toInstant().toEpochMilli());
@@ -74,15 +85,14 @@ public class GamePlayer {
     }
 
 
-    public List<Map<String, Object>> getAllShips(Set<Ship> ships){
+    public List<Map<String, Object>> getAllShips(Set<Ship> ships) {
         return ships.stream().map(ship -> ship.makeShipDTO()).collect(Collectors.toList());
     }
 
 
-    public List<Map<String, Object>> listAllSalvos(Set<Salvo> salvos){
+    public List<Map<String, Object>> listAllSalvos(Set<Salvo> salvos) {
         return salvos.stream().map(salvo -> salvo.makeSalvoDTO()).collect(Collectors.toList());
     }
-
 
 
 }
