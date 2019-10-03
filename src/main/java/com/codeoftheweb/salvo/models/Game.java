@@ -48,10 +48,11 @@ public class Game {
 
     public Map<String, Object> gameDTO() {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
+
         dto.put("id", this.getId());
         dto.put("created", this.getCreationDate().toInstant().toEpochMilli());
         dto.put("gamePlayers", this.listGamePlayers(getGameplayers()));
-        dto.put("score", this.listScores());
+        dto.put("scores", this.listScores());
         return dto;
     }
 

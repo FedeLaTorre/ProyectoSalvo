@@ -20,6 +20,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.web.bind.annotation.RestController;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -188,7 +189,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 				.antMatchers("/web/**").permitAll()
-                .antMatchers("/**").hasAuthority("USER");
+                .antMatchers("/api/game_view/**").hasAuthority("USER")
+                .antMatchers("/api/games").permitAll();
+
 
 
         http.formLogin()
@@ -198,19 +201,14 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.logout().logoutUrl("/api/logout");
 
-		// turn off checking for CSRF tokens
 		http.csrf().disable();
 
-		// if user is not authenticated, just send an authentication failure response
 		http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-		// if login is successful, just clear the flags asking for authentication
 		http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
 
-		// if login fails, just send an authentication failure response
 		http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-		// if logout is successful, just send a success response
 		http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 	}
 
@@ -221,7 +219,6 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		}
     }
 }
-
 
 
 
