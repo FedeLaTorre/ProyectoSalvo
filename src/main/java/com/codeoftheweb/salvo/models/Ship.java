@@ -8,50 +8,65 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+//@Entity le dice a JPA que cree una tabla con la clase Game
 @Entity
 public class Ship {
 
+
+    //@Id se encarga de manejar automaticamente los id autoincrementables en una tabla, junto a @GeneratedValue y @GenericGenerator
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String type;
 
+    //@Column me crea una columna temporal para agregar shipLocations, sino tendria que crear otra clase y otro repositorio por un solo atributo
     @ElementCollection
     @Column(name = "shipLocations")
     private Set<String> locations;
 
-
+    //Relacion ManyToOne con Gameplayer. Un GamePlayer tiene muchas ships
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayerID")
     private GamePlayer gamePlayer;
 
+    //Constructor por defecto
     public Ship() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public Set<String> getLocations() {
-        return locations;
-    }
-
-    public GamePlayer getGamePlayer() {
-        return gamePlayer;
-    }
-
+    //Construsctor personalizado. Se le pasa Type, Locations y GamePlayer
     public Ship(String type, Set<String> locations, GamePlayer gamePlayer) {
         this.type = type;
         this.locations = locations;
         this.gamePlayer = gamePlayer;
     }
 
+    //Getter de Id
+    public long getId() {
+        return id;
+    }
 
+    //Getter de Type
+    public String getType() {
+        return type;
+    }
+
+    //Getter de Locations
+    public Set<String> getLocations() {
+        return locations;
+    }
+
+    //Getter de GamePlayer
+    public GamePlayer getGamePlayer() {
+        return gamePlayer;
+    }
+
+    //Setter de GamePlayer
+    public void setGamePlayer(GamePlayer gamePlayer) {
+        this.gamePlayer = gamePlayer;
+    }
+
+    //DTO de Ship. Envia informacion de Type y de Locations
     public Map<String, Object> makeShipDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("type", this.getType());

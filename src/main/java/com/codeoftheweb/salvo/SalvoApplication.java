@@ -83,33 +83,33 @@ public class SalvoApplication {
             gamePlayerRepository.saveAll(Arrays.asList(gp1, gp2, gp3, gp4, gp5, gp6, gp7, gp8, gp9, gp10, gp11, gp12, gp13, gp14));
 
 
-            Ship ship1 = new Ship("Destroyer", new HashSet<>(Arrays.asList("H2", "H3", "H4")), gp1);
-            Ship ship2 = new Ship("Submarine", new HashSet<>(Arrays.asList("E1", "F1", "G1")), gp1);
-            Ship ship3 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("B4", "B5")), gp1);
-            Ship ship4 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp2);
-            Ship ship5 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("F1", "F2")), gp2);
-            Ship ship6 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp3);
-            Ship ship7 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp3);
-            Ship ship8 = new Ship("Submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp4);
-            Ship ship9 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("G6", "H6")), gp4);
-            Ship ship10 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp5);
-            Ship ship11 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp5);
-            Ship ship12 = new Ship("Submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp6);
-            Ship ship13 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("G6", "H6")), gp6);
-            Ship ship14 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp7);
-            Ship ship15 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp7);
-            Ship ship16 = new Ship("Submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp8);
-            Ship ship17 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("G6", "H6")), gp8);
-            Ship ship18 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp9);
-            Ship ship19 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp9);
-            Ship ship20 = new Ship("Submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp10);
-            Ship ship21 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("G6", "H6")), gp10);
-            Ship ship22 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp11);
-            Ship ship23 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp11);
-            Ship ship24 = new Ship("Destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp13);
-            Ship ship25 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("C6", "C7")), gp13);
-            Ship ship26 = new Ship("Submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp14);
-            Ship ship27 = new Ship("Patrol Boat", new HashSet<>(Arrays.asList("G6", "H6")), gp14);
+            Ship ship1 = new Ship("destroyer", new HashSet<>(Arrays.asList("H2", "H3", "H4")), gp1);
+            Ship ship2 = new Ship("submarine", new HashSet<>(Arrays.asList("E1", "F1", "G1")), gp1);
+            Ship ship3 = new Ship("patrolboat", new HashSet<>(Arrays.asList("B4", "B5")), gp1);
+            Ship ship4 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp2);
+            Ship ship5 = new Ship("patrolboat", new HashSet<>(Arrays.asList("F1", "F2")), gp2);
+            Ship ship6 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp3);
+            Ship ship7 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp3);
+            Ship ship8 = new Ship("submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp4);
+            Ship ship9 = new Ship("patrolboat", new HashSet<>(Arrays.asList("G6", "H6")), gp4);
+            Ship ship10 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp5);
+            Ship ship11 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp5);
+            Ship ship12 = new Ship("submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp6);
+            Ship ship13 = new Ship("patrolboat", new HashSet<>(Arrays.asList("G6", "H6")), gp6);
+            Ship ship14 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp7);
+            Ship ship15 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp7);
+            Ship ship16 = new Ship("submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp8);
+            Ship ship17 = new Ship("patrolboat", new HashSet<>(Arrays.asList("G6", "H6")), gp8);
+            Ship ship18 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp9);
+            Ship ship19 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp9);
+            Ship ship20 = new Ship("submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp10);
+            Ship ship21 = new Ship("patrolboat", new HashSet<>(Arrays.asList("G6", "H6")), gp10);
+            Ship ship22 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp11);
+            Ship ship23 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp11);
+            Ship ship24 = new Ship("destroyer", new HashSet<>(Arrays.asList("B5", "C5", "D5")), gp13);
+            Ship ship25 = new Ship("patrolboat", new HashSet<>(Arrays.asList("C6", "C7")), gp13);
+            Ship ship26 = new Ship("submarine", new HashSet<>(Arrays.asList("A2", "A3", "A4")), gp14);
+            Ship ship27 = new Ship("patrolboat", new HashSet<>(Arrays.asList("G6", "H6")), gp14);
 
             shipRepository.saveAll(Arrays.asList(ship1, ship2, ship3, ship4, ship5, ship6, ship7, ship8, ship9, ship10, ship11, ship12, ship13, ship14, ship15, ship16, ship17, ship18, ship19, ship20, ship21, ship22, ship23, ship24, ship25, ship26, ship27));
 
@@ -190,7 +190,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 				.antMatchers("/web/**").permitAll()
                 .antMatchers("/api/game_view/**").hasAuthority("USER")
-                .antMatchers("/api/games").permitAll();
+                .antMatchers("/api/games").permitAll()
+                .antMatchers("/rest/*").hasAuthority("USER");
+
 
 
 
